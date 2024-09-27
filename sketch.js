@@ -23,18 +23,6 @@ function setup() {
     divisions.push(new Divisions(k, height-divisionHeight/2, 10, divisionHeight));
   }
  
-    
-}
- 
-
-
-function draw() {
-  background("black");
-  textSize(20)
- 
-  Engine.update(engine);
-  ground.display();
-
    //create 1st row of plinko objects
    for (var j = 75; j <=width; j=j+50) { 
     plinkos.push(new Plinko(j,75));
@@ -54,13 +42,18 @@ function draw() {
   //create 4th row of plinko objects
   for (var j = 50; j <=width; j=j+50) { 
     plinkos.push(new Plinko(j,375));
-  }
+  } 
+}
+ 
 
-  //create particle objects
-  if(frameCount%60===0){
-    particles.push(new Particle(random(width/2-10, width/2+10), 10, 10));
-  }
-  
+
+function draw() {
+  background("black");
+  textSize(20)
+ 
+  Engine.update(engine);
+  ground.display();
+ 
   //display the plinkos 
   for (var i = 0; i < plinkos.length; i++) {
     plinkos[i].display();   
@@ -69,6 +62,11 @@ function draw() {
   //display the divisions
   for (var k = 0; k < divisions.length; k++) {
     divisions[k].display();
+  }
+
+  //create particle objects
+  if(frameCount%60===0){
+    particles.push(new Particle(random(width/2-10, width/2+10), 10, 10));
   }
 
   //display the paricles 
